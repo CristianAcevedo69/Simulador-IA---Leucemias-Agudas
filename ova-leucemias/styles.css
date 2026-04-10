@@ -1,0 +1,170 @@
+/* ================= BASE ================= */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  min-height: 100vh;
+
+  background: radial-gradient(circle at top, #1e3a8a, #0f172a);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* efecto IA */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/circuit-board.png');
+  opacity: 0.05;
+  z-index: -1;
+}
+
+/* contenedor */
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+}
+
+/* título */
+h1 {
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px #3b82f6;
+}
+
+/* botones */
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background: #3b82f6;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.grid img {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, border 0.3s;
+}
+
+.grid img:hover {
+  transform: scale(1.05);
+  border: 2px solid #3b82f6;
+}
+
+/* análisis */
+.analysis-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.analysis-image-container {
+  position: relative;
+  width: 250px;
+}
+
+.analysis-image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(59, 130, 246, 0.8);
+  box-shadow: 0 0 10px #3b82f6;
+  animation: scan 2s infinite;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+.loader {
+  border: 5px solid #1e293b;
+  border-top: 5px solid #3b82f6;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 15px 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.progress-bar {
+  width: 80%;
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+#progress {
+  height: 20px;
+  width: 0%;
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.ia-text {
+  font-size: 14px;
+  color: #93c5fd;
+  font-style: italic;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .analysis-image-container {
+    width: 200px;
+  }
+
+  button {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .analysis-image-container {
+    width: 180px;
+  }
+
+  .progress-bar {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}
